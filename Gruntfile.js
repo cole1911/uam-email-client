@@ -16,12 +16,12 @@ module.exports = function(grunt) {
   	},
   	includeSource: {
     	options: {
-    		basePath: '',
-    		baseUrl: ''
+    		basePath: 'src',
+    		baseUrl: 'src/'
     	},
     	myTarget: {
      		files: {
-     			'app/index.html': 'app/dev/index.tpl.html'
+     			'index.html': 'src/index.tpl.html'
      		}
      		// Target-specific file lists and/or options go here.
     	}
