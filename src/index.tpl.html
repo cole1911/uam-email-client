@@ -1,5 +1,5 @@
 <!doctype html>
-<html  ng-app="uam-email-client" ng-controller="AppCtrl">
+<html  ng-app="myApp" ng-controller="AppCtrl">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -20,13 +20,14 @@
     <!-- include: "type": "css", "basePath": "src", "files": "css/**/*.css" -->
   </head>
   <body>
-    
-    <input ng-model="var"/>
-    
-    <p>{{var}}</p>
-
+  
+    <div class="main-container" ui-view>
+      {{var}}
+    </div>
+    <a ui-sref="inbox">Inbox</a>
+    <a ui-sref="sent">Sent</a>
     <!-- Skrypty JS -->
     <!-- include: "type": "js", "basePath": "src", "files": "lib/**/*.js" -->
-    <!-- include: "type": "js", "basePath": "src", "files": "js/**/*.js" -->
+    <!-- include: "type": "js", "basePath": "src", "files": "app/**/*.js" -->
   </body>
 </html>
