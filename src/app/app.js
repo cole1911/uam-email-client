@@ -13,6 +13,11 @@ angular.module('myApp',['ui.router'])
       templateUrl: "src/app/views/sent.html",
       controller: 'SentCtrl'
     })
+    .state('new', {
+      url: "/new",
+      templateUrl: "src/app/views/new-email.html",
+      controller: 'NewEmailCtrl'
+    })
     .state('email', {
       url: "/email/:id",
       templateUrl: "src/app/views/email.html"
