@@ -17,7 +17,7 @@ angular.module('myApp')
 					clickedEl = clickedEl.parentElement;
 				}
 				if(clickedEl.tagName === 'LI') {
-					$location.path("email/" + clickedEl.id);
+					$location.path("view/" + clickedEl.id);
 					scope.$apply();
 				}
 			});

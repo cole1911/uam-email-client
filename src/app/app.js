@@ -18,9 +18,9 @@ angular.module('myApp',['ui.router'])
       templateUrl: "src/app/views/new-email.html",
       controller: 'NewEmailCtrl'
     })
-    .state('email', {
-      url: "/email/:id",
-      templateUrl: "src/app/views/email.html"
+    .state('view', {
+      url: "/view/:id",
+      templateUrl: "src/app/views/view.html"
     });
 })
 
