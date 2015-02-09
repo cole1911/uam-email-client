@@ -7,6 +7,7 @@ body { margin:0px; padding:0px}
 #list li {
 	display: block;
 	padding: 2px;
+	cursor: pointer;
 }
 
 #list li span{
@@ -14,6 +15,7 @@ body { margin:0px; padding:0px}
 	padding: 2px;
 }
 
+#list li.unread {background-color: #6C6C6C;}
 #list li span.subject {margin-left:20px; font-weight: bold}
 #list li span.sender {width:200px;color:#c0c0c0}
 .emails-list {display:inline-block;}

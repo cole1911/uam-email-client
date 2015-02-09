@@ -61,5 +61,23 @@
     "receivers": [
       "d@d.pl"
     ]
+  },
+  {
+    "id": 1423483637811,
+    "content": "tresc",
+    "title": "tytul",
+    "sent": 1423483637811,
+    "receivers": [
+      "o@o2.pl"
+    ]
+  },
+  {
+    "id": 1423486660607,
+    "content": "d",
+    "title": "d",
+    "sent": 1423486660607,
+    "receivers": [
+      "d"
+    ]
   }
 ]

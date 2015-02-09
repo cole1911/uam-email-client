@@ -1,6 +1,6 @@
 angular.module('myApp')
 
-.directive('uamEmailList', function($rootScope, dataService) {
+.directive('uamEmailList', function($rootScope, $location, dataService) {
 	return {
 		scope: {
 			view: "@view"
@@ -8,28 +8,63 @@ angular.module('myApp')
 		restrict: 'E',
 		templateUrl: 'src/app/directives/uam-emails-list/uam-email-list.tpl.html',
 		link: function(scope, element) {
-			scope.message ="";
+			scope.message = "";
+			scope.dataLoading = true;
+			var list = element.find("ul");
+			element.bind('click', function(event) {
+				var clickedEl = event.target;
+				while(clickedEl !== undefined && clickedEl.tagName !== 'LI') {
+					clickedEl = clickedEl.parentElement;
+				}
+				if(clickedEl.tagName === 'LI') {
+					$location.path("email/" + clickedEl.id);
+					scope.$apply();
+				}
+			});
+
 			var intervalId = setInterval(function() {
-				var al = document.querySelector(".ajax-loader");
-				al.style.display="block";
+				scope.dataLoading = true; 	
 				dataService.getEmails(scope.view).then(function(result) {
-					scope.emails = result.data;
-					if(scope.emails.length ===0) {
-						scope.m = "Brak maili";
-						return;
+					if(scope.emails === undefined) {
+						scope.emails = result.data;
+						if(scope.emails.length === 0) {
+							scope.m = "Brak maili";
+							return;
+						}
+						
+						
+						//list.html('');
+						_.sortBy(scope.emails, function(num) {return num;});
+
+						scope.emails.reverse();
+						
+						for(var key in scope.emails) {
+							list.append(prepareEmailToList(scope.emails[key]));
+						}
+						scope.dataLoading = false; 	
+					} else {
+						scope.lastDate = scope.emails[0].received;
+						appendNewEmails(scope.emails, result.data, scope.lastDate);
+						scope.dataLoading = false;
 					}
-					al.style.display="none";
-					var list = element.find("ul");
-					list.html('');
-					_.sortBy(scope.emails, function(num) {return num;});
-					scope.emails.reverse();
 					
-					for(var key in scope.emails) {
-						list.append(appendEmailToList(scope.emails[key]));
-					}	
+
 				});
+
+				var appendNewEmails = function(oldList, newList, date) {
+					var i = newList.length-1;
+					if(i>0) {
+						while(newList[i].received > date & i>0) {
+							oldList.unshift(newList[i]);
+							
+							list.insertBefore(prepareEmailToList(newList[i]),list.firstChild);
+							console.log('Email added to list');
+							i--;
+						}
+					}
+				};
 				
-				var appendEmailToList = function(email) {
+				var prepareEmailToList = function(email) {
 					var listElement = document.createElement("li");
 					listElement.id = email.id;
 					var addresses = document.createElement("span");
@@ -50,18 +85,23 @@ angular.module('myApp')
 					var tempDate = email.received ? email.received : email.sent;
 					var date = new Date(tempDate);
 					receivedDate.className = "date";
-					receivedDate.innerHTML = date.getDate() + "-" + date.getMonth()+1 + "-" +
+					receivedDate.innerHTML = date.getDate() + "-" + (date.getMonth()+1) + "-" +
 												+ date.getFullYear() + " " + date.getHours() + ":" +
-												+ fillMinutes(date.getMinutes());
+												+ (date.getMinutes() > 9 ? date.getMinutes() : 0 + date.getMinutes());
 					listElement.appendChild(addresses);
 					listElement.appendChild(subject);
 					listElement.appendChild(receivedDate);
+					if(!email.read) {
+						listElement.className = "unread";
+					}
 					return listElement;
 				};
 			},10000);
 			
 			scope.$on('$destroy', function() {
-				clearInterval(intervalId);
+				if(intervalId) {
+					clearInterval(intervalId);
+				}
 			});
 			
 			var fillMinutes = function(minutes) {
