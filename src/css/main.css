@@ -1,26 +1,11 @@
-body { margin:0px; padding:0px}
-
-#list {
-	list-style: none;margin:0px;margin-top:20px;
+a.label {
+    display: inline-block;
 }
 
-#list li {
-	display: block;
-	padding: 2px;
-	cursor: pointer;
+.list-group-item:hover {
+    background: #eee;
 }
 
-#list li span{
-	display: inline-block;
-	padding: 2px;
-}
-
-#list li.unread {background-color: #6C6C6C;}
-#list li span.subject {margin-left:20px; font-weight: bold}
-#list li span.sender {width:200px;color:#c0c0c0}
-.emails-list {display:inline-block;}
-.menu {display:inline-block;width:200px;vertical-align:top; padding:20px;background-color:}
-.main-container {display: inline-block;}
-.menu a {display:block; text-decoration:none; cursor:pointer;color:#4DB3B3;padding:5px;text-align: center;font-size:28px}
+//.menu a {display:block; text-decoration:none; cursor:pointer;color:#4DB3B3;padding:5px;text-align: center;font-size:28px}
 .ajax-loader {background-image: url('../img/ajax-loader.gif');width:31px;height:31px;margin:5px;
 				position:fixed;left:0px;top:0px}
