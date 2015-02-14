@@ -94,6 +94,7 @@ angular.module('myApp')
 					if(!email.read) {
 						listElement.className = "unread";
 					}
+                                        listElement.className += " list-group-item";
 					return listElement;
 				};
 			},10000);

@@ -20,15 +20,18 @@
     <!-- include: "type": "css", "basePath": "src", "files": "css/**/*.css" -->
   </head>
   <body>
-  	<div class="menu">
-  		<a ui-sref="new">Create email</a>
-  		<a ui-sref="inbox">Inbox</a>
-    	<a ui-sref="sent">Sent</a>
+      <div class="container">
+  	<div class="menu col-md-3">
+            <h1>
+                <a ui-sref="new" class="label label-primary">Create email</a>
+                <a ui-sref="inbox" class="label label-primary">Inbox list</a>
+                <a ui-sref="sent" class="label label-primary">Sent list</a>
+            </h1>
   	</div>
-    <div class="main-container" ui-view>
-      {{var}}
-    </div>
-
+        <div class="main-container col-md-9" ui-view>
+          {{var}}
+        </div>
+      </div>
     <!-- Skrypty JS -->
     <!-- include: "type": "js", "basePath": "src", "files": "lib/**/*.js" -->
     <!-- include: "type": "js", "basePath": "src", "files": "app/**/*.js" -->
