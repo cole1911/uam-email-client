@@ -57,7 +57,7 @@ angular.module('myApp')
 						while(newList[i].received > date & i>0) {
 							oldList.unshift(newList[i]);
 							
-							list.insertBefore(prepareEmailToList(newList[i]),list.firstChild);
+							list[0].insertBefore(prepareEmailToList(newList[i]),list[0].firstChild);
 							console.log('Email added to list');
 							i--;
 						}
