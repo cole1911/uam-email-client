@@ -1,92 +1,11 @@
 [
-  {
-    "id": 1421610518917,
-    "title": "test1",
-    "content": "Cos tam",
-    "receivers": [
-      "sosnowski@outlook.com"
-    ],
-    "sent": 1421610518917
-  },
-  {
-    "id": 1421610528931,
-    "title": "test2",
-    "content": "Cos tam",
-    "receivers": [
-      "sosnowski@outlook.com"
-    ],
-    "sent": 1421610528931
-  },
-  {
-    "id": 1423156724062,
-    "content": "Cos tam",
-    "title": "fd",
-    "sent": 1423156724062,
-    "receivers": [
-      "damian@s.pl"
-    ]
-  },
-  {
-    "id": 1423156803513,
-    "content": "Content",
-    "title": "Title",
-    "sent": 1423156803513,
-    "receivers": [
-      "mail@mail.com"
-    ]
-  },
-  {
-    "id": 1423157533930,
-    "content": "c",
-    "title": "t",
-    "sent": 1423157533930,
-    "receivers": [
-      "damian@damian.pl"
-    ]
-  },
-  {
-    "id": 1423157676158,
-    "content": "s",
-    "title": "t",
-    "sent": 1423157676158,
-    "receivers": [
-      "damian@kk.pl"
-    ]
-  },
-  {
-    "id": 1423157835639,
-    "content": "dd",
-    "title": "dd",
-    "sent": 1423157835639,
-    "receivers": [
-      "d@d.pl"
-    ]
-  },
-  {
-    "id": 1423483637811,
-    "content": "tresc",
-    "title": "tytul",
-    "sent": 1423483637811,
-    "receivers": [
-      "o@o2.pl"
-    ]
-  },
-  {
-    "id": 1423486660607,
-    "content": "d",
-    "title": "d",
-    "sent": 1423486660607,
-    "receivers": [
-      "d"
-    ]
-  },
-  {
-    "id": 1423943911746,
-    "content": "ccc",
-    "title": "bbb",
-    "sent": 1423943911746,
-    "receivers": [
-      "aaa"
-    ]
-  }
+{
+"id": 1421610518917,
+"title": "test1",
+"content": "Cos tam",
+"receivers": [
+"sosnowski@outlook.com"
+],
+"sent": 1421610518917
+}
 ]

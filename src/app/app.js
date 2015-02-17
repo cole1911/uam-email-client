@@ -26,7 +26,7 @@ angular.module('myApp',['ui.router'])
 
 .controller('AppCtrl', function AppCtrl($scope, $rootScope) {
 
-	$scope.var = 'Hello World';
+	$scope.var = 'Welcome to email system';
 })
 
 .run();
