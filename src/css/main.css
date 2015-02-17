@@ -1,3 +1,13 @@
+body {
+    background: url('http://i.imgur.com/A2rqm.png');
+}
+
+.container {
+    margin: 50px auto;
+    padding-bottom: 50px;
+    background: #FFF;
+}
+
 a.label {
     display: inline-block;
 }
@@ -7,5 +17,42 @@ a.label {
 }
 
 //.menu a {display:block; text-decoration:none; cursor:pointer;color:#4DB3B3;padding:5px;text-align: center;font-size:28px}
-.ajax-loader {background-image: url('../img/ajax-loader.gif');width:31px;height:31px;margin:5px;
-				position:fixed;left:0px;top:0px}
+.ajax-loader {
+    background-color: rgba(0, 0, 0, 0.6);
+    background-image: url('../img/ajax-loader.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    background-size: 50px 50px;
+
+    width:100%;
+    height:100%;
+    position:fixed;
+    left:0;
+    top:0
+}
+
+.unread {
+    font-weight: bold;
+}
+
+.sender {
+    display: inline-block;
+    width: 20%;
+    font-weight: normal;
+    overflow: hidden;
+}
+
+.subject {
+    display: inline-block;
+    padding-left: 5%;
+    width: 50%;
+}
+
+.date {
+    display: block;
+    width: 15%;
+    float: right;
+    text-align: right;
+    font-weight: normal;
+}

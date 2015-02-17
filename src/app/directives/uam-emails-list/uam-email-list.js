@@ -28,7 +28,7 @@ angular.module('myApp')
 					if(scope.emails === undefined) {
 						scope.emails = result.data;
 						if(scope.emails.length === 0) {
-							scope.m = "Brak maili";
+							scope.m = "No emails";
 							return;
 						}
 						

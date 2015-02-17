@@ -1,12 +1,15 @@
+<h2>{{m}}</h2>
+<div class="form-group">
+        <label>Recivers</label>
+	<input ng-model="receivers" placeholder="mail@example.com" class="form-control"/>
+</div>
+<div class="form-group">
+        <label>Title</label>
+	<input ng-model="title" placeholder="Hey Jude!" class="form-control"/>
+</div>
+<div class="form-group">
+        <label>Content</label>
+	<textarea ng-model="content" placeholder="Very important content..." class="form-control"></textarea>
+</div>
 
-<div>
-	<input ng-model="receivers" placeholder="Receivers"/>
-</div>
-<div>
-	<input ng-model="title" placeholder="Title"/>
-</div>
-<div>
-	<textarea ng-model="content" placeholder="Content"></textarea>
-</div>
-
-<button ng-click="send()">Send</button>
+<input ng-click="send()" class="btn btn-default" type="submit" value="Submit">

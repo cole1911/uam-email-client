@@ -24,6 +24,7 @@ angular.module('myApp')
 		$scope.receivers = "";
 		$scope.content = "",
 		$scope.sent = 0;
+                $scope.m = "Create new email";
 	}
 	
 	$scope.initForm();
