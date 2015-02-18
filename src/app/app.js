@@ -1,4 +1,4 @@
-angular.module('myApp',['ui.router'])
+angular.module('myApp',['ui.router','LocalStorageModule'])
 
 
 .config(function($stateProvider) {
@@ -21,6 +21,11 @@ angular.module('myApp',['ui.router'])
     .state('view', {
       url: "/view/:id",
       templateUrl: "src/app/views/view.html"
+    })
+    .state('config', {
+      url: "/config",
+      templateUrl: "src/app/views/config.html",
+      controller: 'ConfigCtrl'
     });
 })
 
