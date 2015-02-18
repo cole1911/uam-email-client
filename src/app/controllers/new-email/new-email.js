@@ -16,16 +16,16 @@ angular.module('myApp')
 			console.log("email sent");
 			$location.path("sent");
 		});
-	}
+	};
 
 	$scope.initForm = function() {
 		$scope.id = 0;
 		$scope.title = "";
 		$scope.receivers = "";
-		$scope.content = "",
+		$scope.content = "";
 		$scope.sent = 0;
-                $scope.m = "Create new email";
-	}
+        $scope.m = "Create new email";
+	};
 	
 	$scope.initForm();
 	

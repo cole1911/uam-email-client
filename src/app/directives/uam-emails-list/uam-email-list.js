@@ -10,15 +10,26 @@ angular.module('myApp')
 		link: function(scope, element) {
 			scope.message = "";
 			scope.dataLoading = true;
+
 			var list = element.find("ul");
+
 			element.bind('click', function(event) {
 				var clickedEl = event.target;
 				while(clickedEl !== undefined && clickedEl.tagName !== 'LI') {
 					clickedEl = clickedEl.parentElement;
 				}
 				if(clickedEl.tagName === 'LI') {
-					$location.path("view/" + clickedEl.id);
-					scope.$apply();
+					if(scope.view !== "sent" && clickedEl.className.indexOf("unread") !=-1) {
+						var obj = {id:clickedEl.id,read:true};
+						dataService.updateEmail(clickedEl.id,obj).then(function(result) {
+							$location.path("view/" + clickedEl.id);
+							scope.$apply();
+						});
+					} else {
+						$location.path("view/" + clickedEl.id);
+						scope.$apply();
+					}
+
 				}
 			});
 
@@ -32,8 +43,6 @@ angular.module('myApp')
 							return;
 						}
 						
-						
-						//list.html('');
 						_.sortBy(scope.emails, function(num) {return num;});
 
 						scope.emails.reverse();
@@ -85,16 +94,14 @@ angular.module('myApp')
 					var tempDate = email.received ? email.received : email.sent;
 					var date = new Date(tempDate);
 					receivedDate.className = "date";
-					receivedDate.innerHTML = date.getDate() + "-" + (date.getMonth()+1) + "-" +
-												+ date.getFullYear() + " " + date.getHours() + ":" +
-												+ (date.getMinutes() > 9 ? date.getMinutes() : 0 + date.getMinutes());
+					receivedDate.innerHTML = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear() + " " + date.getHours() + ":" + (date.getMinutes() > 9 ? date.getMinutes() : 0 + date.getMinutes());
 					listElement.appendChild(addresses);
 					listElement.appendChild(subject);
 					listElement.appendChild(receivedDate);
 					if(!email.read) {
 						listElement.className = "unread";
 					}
-                                        listElement.className += " list-group-item";
+                    listElement.className += " list-group-item";
 					return listElement;
 				};
 			},10000);

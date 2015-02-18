@@ -18,4 +18,12 @@ service('dataService', function($http) {
 		});
     };
 
+    this.updateEmail = function(id,data) {
+    	return $http({
+			method: 'PUT',
+			url: "/emails/" + id,
+			data: data
+		});
+    };
+
 });

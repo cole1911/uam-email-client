@@ -1,7 +1,7 @@
 function SentEmail () {
-	this.id;
-	this.title;
-	this.receivers;
-	this.content;
-	this.sent;
+	this.id="";
+	this.title="";
+	this.receivers=[];
+	this.content="";
+	this.sent="";
 } 
