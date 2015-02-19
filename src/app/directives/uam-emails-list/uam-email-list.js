@@ -16,7 +16,7 @@ angular.module('myApp')
 
 			element.bind('click', function(event) {
 				var clickedEl = event.target;
-				while(clickedEl !== undefined && clickedEl.tagName !== 'LI') {
+				while (clickedEl !== undefined && clickedEl.tagName !== 'LI' && clickedEl.tagName !== 'BUTTON') {
 					clickedEl = clickedEl.parentElement;
 				}
 				if(clickedEl.tagName === 'LI') {
@@ -32,7 +32,10 @@ angular.module('myApp')
 					}
 
 				}
-			});
+                                if(clickedEl.tagName === 'BUTTON') {
+                                    $location.path("del/" + clickedEl.id);
+                                }
+                        });
 
 			var intervalId = setInterval(function() {
 				scope.dataLoading = true; 	
@@ -99,12 +102,19 @@ angular.module('myApp')
 					var date = new Date(tempDate);
 					receivedDate.className = "date";
 					receivedDate.innerHTML = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear() + " " + date.getHours() + ":" + (date.getMinutes() > 9 ? date.getMinutes() : 0 + date.getMinutes());
-					listElement.appendChild(addresses);
+					                                        
+					var deleteButton = document.createElement("button");
+					deleteButton.id = (email.id * 100);
+                                        deleteButton.className = "delete";
+					deleteButton.innerHTML = 'X';
+                                    
+                                        listElement.appendChild(addresses);
 					listElement.appendChild(subject);
                                         listElement.appendChild(prevcontent);
 					listElement.appendChild(receivedDate);
-					var deleteButton = document.createElement("span");
-					
+                                        listElement.appendChild(deleteButton);
+                                        
+                                        
 					if(!email.read) {
 						listElement.className = "unread";
 					}

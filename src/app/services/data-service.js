@@ -25,5 +25,12 @@ service('dataService', function($http) {
 			data: data
 		});
     };
+    
+    this.deleteEmail = function(id) {
+    	return $http({
+			method: 'DELETE',
+			url: "/emails/" + id
+		});
+    };
 
 });
