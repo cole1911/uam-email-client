@@ -91,6 +91,9 @@ angular.module('myApp')
 					var subject = document.createElement("span");
 					subject.className = "subject";
 					subject.innerHTML = email.title;
+                                        var prevcontent = document.createElement("span");
+					prevcontent.className = "prevcontent";
+					prevcontent.innerHTML = email.content.substring(0,60) + '...';                                        
 					var receivedDate = document.createElement("span");
 					var tempDate = email.received ? email.received : email.sent;
 					var date = new Date(tempDate);
@@ -98,6 +101,7 @@ angular.module('myApp')
 					receivedDate.innerHTML = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear() + " " + date.getHours() + ":" + (date.getMinutes() > 9 ? date.getMinutes() : 0 + date.getMinutes());
 					listElement.appendChild(addresses);
 					listElement.appendChild(subject);
+                                        listElement.appendChild(prevcontent);
 					listElement.appendChild(receivedDate);
 					var deleteButton = document.createElement("span");
 					

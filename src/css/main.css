@@ -60,15 +60,26 @@ h1.green a{
 }
 
 .subject {
+    text-transform: uppercase;
     display: inline-block;
     padding-left: 5%;
-    width: 50%;
+    width: 25%;
+}
+
+.prevcontent {
+    display: inline-block;
+    padding-left: 5%;
+    width: 35%
 }
 
 .date {
     display: block;
-    width: 15%;
+    width: 10%;
     float: right;
     text-align: right;
     font-weight: normal;
+}
+
+h2 {
+    text-transform: uppercase;
 }
