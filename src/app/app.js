@@ -20,7 +20,8 @@ angular.module('myApp',['ui.router','LocalStorageModule'])
     })
     .state('view', {
       url: "/view/:id",
-      templateUrl: "src/app/views/view.html"
+      templateUrl: "src/app/views/view.html",
+      controller: 'ViewEmailCtrl'
     })
     .state('config', {
       url: "/config",
