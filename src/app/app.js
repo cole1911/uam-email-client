@@ -23,6 +23,10 @@ angular.module('myApp',['ui.router','LocalStorageModule'])
       templateUrl: "src/app/views/view.html",
       controller: 'ViewEmailCtrl'
     })
+    .state('del', {
+      url: "/del/:id",
+      controller: 'DelEmailCtrl'
+    })
     .state('config', {
       url: "/config",
       templateUrl: "src/app/views/config.html",
