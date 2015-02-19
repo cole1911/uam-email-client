@@ -29,9 +29,21 @@ angular.module('myApp',['ui.router','LocalStorageModule'])
     });
 })
 
-.controller('AppCtrl', function AppCtrl($scope, $rootScope) {
+.controller('AppCtrl', function AppCtrl($scope, $rootScope, configService) {
 
 	$scope.var = 'Welcome to email system';
+
+  var init = function() {
+    var temp = configService.getSkinVariant();
+    $rootScope.skinVariant = temp;
+  };
+
+  init();
+
+  $rootScope.$on("updateSkin", function(event,skinVariant) {
+    $rootScope.skinVariant = skinVariant;
+  });
+
 })
 
 .run();

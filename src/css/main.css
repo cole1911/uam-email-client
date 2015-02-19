@@ -1,5 +1,11 @@
-body {
+body.default {
     background: url('http://i.imgur.com/A2rqm.png');
+}
+body.green {
+    background: url('http://img.wallpaperstock.net:81/green-gradient-wallpapers_2228_1280x800.jpg');
+}
+body.red {
+    background: url('http://www.djkidkash.com/wp-content/uploads/2014/03/red-gradient-art-3206661.jpg');
 }
 
 .container {
@@ -10,6 +16,16 @@ body {
 
 a.label {
     display: inline-block;
+}
+
+
+
+h1.red a {
+    background-color: #BD1818 !important;
+}
+
+h1.green a{
+    background-color: #167317 !important;
 }
 
 .list-group-item:hover {

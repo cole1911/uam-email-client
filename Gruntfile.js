@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-    	files: ['src/app/**/*.js','src/views/**/*'],
+    	files: ['src/app/**/*.js','src/app/views/**/*'],
     	tasks: ['jshint','includeSource'],
   	},
   	includeSource: {

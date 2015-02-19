@@ -1,29 +1,27 @@
 angular.module('myApp')
 
-.controller('ConfigCtrl', function($rootScope,$scope, localStorageService) {
-	var DEFAULT_INTERVAL=10000;
-	var DEFAULT_SKIN='default';
-	$scope.m = "Config";
+.controller('ConfigCtrl', function($rootScope,$scope, configService) {
 
-	$scope.skins = [{"key":1,"value":"default"},{"key":2,"value":"red"},{"key":3,"value":"green"}];
+
+	$scope.m = "Config";
+	
+	$scope.skins = [{ "value": "default", "text": "default" }, { "value": "red", "text": "red" }, { "value": "green", "text": "green" }];
 
 	$scope.save = function() {
-		localStorageService.set("inboxInterval",$scope.inboxInterval);
-		localStorageService.set("skinVariant",$scope.skinVariant);
-		$rootScope.$emit("updateInterval");
+		if($scope.interval < 10000) {
+			alert("Minimalna wartość to 10000ms");
+			init();
+			
+			return;
+		}
+		configService.setInboxInterval($scope.interval);
+		configService.setSkinVariant($scope.skinVariant);
+		$rootScope.$emit("updateSkin", $scope.skinVariant);
 	};
 
 	var init = function() {
-		if(localStorageService.get("inboxInterval") !== null) {
-			$scope.inboxInterval = localStorageService.get("inboxInterval");
-		} else {
-			$scope.inboxInterval = DEFAULT_INTERVAL;
-		}
-		if(localStorageService.get("skinVariant") !== null) {
-			$scope.skinVariant = localStorageService.get("skinVariant");
-		} else {
-			$scope.skinVariant = DEFAULT_SKIN;
-		}
+		$scope.interval = configService.getInboxInterval();
+		$scope.skinVariant = configService.getSkinVariant();
 	};
 
 	init();

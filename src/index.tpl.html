@@ -19,10 +19,10 @@
     -->
     <!-- include: "type": "css", "basePath": "src", "files": "css/**/*.css" -->
   </head>
-  <body>
+  <body class="{{skinVariant}}">
       <div class="container">
   	<div class="menu col-md-3">
-            <h1>
+            <h1 class="{{skinVariant}}">
                 <a ui-sref="new" class="label label-primary">Create email</a>
                 <a ui-sref="inbox" class="label label-primary">Inbox list</a>
                 <a ui-sref="sent" class="label label-primary">Sent list</a>
@@ -33,7 +33,7 @@
             <h2>{{var}}</h2>
         </div>
       </div>
-    <!-- Skrypty JS -->
+    <!-- Skrypty JS  -->
     <!-- include: "type": "js", "basePath": "src", "files": "lib/**/*.js" -->
     <!-- include: "type": "js", "basePath": "src", "files": "app/**/*.js" -->
   </body>

@@ -1,6 +1,6 @@
 angular.module('myApp')
 
-.directive('uamEmailList', function($rootScope, $location, dataService) {
+.directive('uamEmailList', function($rootScope, $location, dataService, configService) {
 	return {
 		scope: {
 			view: "@view"
@@ -12,6 +12,7 @@ angular.module('myApp')
 			scope.dataLoading = true;
 
 			var list = element.find("ul");
+			var interval = configService.getInboxInterval();
 
 			element.bind('click', function(event) {
 				var clickedEl = event.target;
@@ -23,11 +24,11 @@ angular.module('myApp')
 						var obj = {id:clickedEl.id,read:true};
 						dataService.updateEmail(clickedEl.id,obj).then(function(result) {
 							$location.path("view/" + clickedEl.id);
-							scope.$apply();
+							//scope.$apply();
 						});
 					} else {
 						$location.path("view/" + clickedEl.id);
-						scope.$apply();
+						//scope.$apply();
 					}
 
 				}
@@ -98,13 +99,15 @@ angular.module('myApp')
 					listElement.appendChild(addresses);
 					listElement.appendChild(subject);
 					listElement.appendChild(receivedDate);
+					var deleteButton = document.createElement("span");
+					
 					if(!email.read) {
 						listElement.className = "unread";
 					}
                     listElement.className += " list-group-item";
 					return listElement;
 				};
-			},10000);
+			},interval);
 			
 			scope.$on('$destroy', function() {
 				if(intervalId) {

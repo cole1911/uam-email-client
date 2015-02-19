@@ -2,12 +2,12 @@
 
 <div class="form-group">
         <label>Inbox interval(ms)</label>
-	<input ng-model="inboxInterval" class="form-control"/>
+	<input ng-model="interval" class="form-control"/>
 </div>
 <div class="form-group">
         <label>Skin</label>
 	<input ng-model="skinVariant" class="form-control"/>
-	<select ng-options="skin.value as skin.key for skin in skins"><opition>1</option></select>
+	<select ng-options="obj.value as obj.text for obj in skins" ng-model="skinVariant"></select>
 </div>
 
 <input ng-click="save()" class="btn btn-default" type="submit" value="Save">
