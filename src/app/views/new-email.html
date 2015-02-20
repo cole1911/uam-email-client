@@ -1,15 +1,34 @@
 <h2>{{m}}</h2>
-<div class="form-group">
+<div class="form-group"  >
+<form name="myForm">
         <label>Recivers</label>
-	<input ng-model="receivers" placeholder="mail@example.com" class="form-control"/>
+	<input type="email" placeholder="mail@example.com" name="receivers" ng-model="receivers" ng-minlength="3" required />
+    <div class="error-container" 
+         ng-show="myForm.receivers.$dirty || myForm.receivers.$invalid">
+		<small class="error" ng-show="myForm.receivers.$error.required">
+			Email jest wymagany.
+		</small>
+		<small class="error" ng-show="myForm.receivers.$error.minlength">
+			Email musi składać się przynajmniej z 3 znaków.
+		</small>
+		<small class="error" ng-show="myForm.receivers.$error.email">
+		Nie jest to poprawna forma email.
+		</small>
+	</div>
+<div class="form-group">
+	<label>Title</label>
+	<input name="title" placeholder="Hey Jude!" type="text" ng-model="title" required/>
+		 <div class="error-container" ng-show="myForm.title.$dirty || myForm.title.$invalid">
+			<small class="error" ng-show="myForm.title.$error.required">Tutuł jest wymagany.</small>
+		</div>
 </div>
 <div class="form-group">
-        <label>Title</label>
-	<input ng-model="title" placeholder="Hey Jude!" class="form-control"/>
-</div>
-<div class="form-group">
-        <label>Content</label>
-	<textarea ng-model="content" placeholder="Very important content..." class="form-control"></textarea>
+	<label>Content</label>
+	<textarea cols="30" rows="10" type="textarea" ng-model="content" name="content" placeholder="Very important content..." required ></textarea>
+		<div class="error-container" ng-show="myForm.content.$dirty || myForm.content.$invalid">
+			<small class="error" ng-show="myForm.content.$error.required">Treść jest wymagana.</small>
+		</div>
 </div>
 
 <input ng-click="send()" class="btn btn-default" type="submit" value="Submit">
+</form>
