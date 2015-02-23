@@ -10,4 +10,13 @@
 	<select ng-options="obj.value as obj.text for obj in skins" ng-model="skinVariant"></select>
 </div>
 
+<div class="form-group">
+        <label>Labels</label>
+	<input ng-model="labelName" class="form-control"/>
+	<input ng-click="addLabel(labelName)" class="btn btn-default" type="submit" value="Add label">
+	<ul>
+		<li ng-repeat="label in labels">{{label}}</li>
+	</ul>
+</div>
+
 <input ng-click="save()" class="btn btn-default" type="submit" value="Save">

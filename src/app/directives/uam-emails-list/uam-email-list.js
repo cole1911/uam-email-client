@@ -24,18 +24,19 @@ angular.module('myApp')
 						var obj = {id:clickedEl.id,read:true};
 						dataService.updateEmail(clickedEl.id,obj).then(function(result) {
 							$location.path("view/" + clickedEl.id);
-							//scope.$apply();
 						});
 					} else {
 						$location.path("view/" + clickedEl.id);
-						//scope.$apply();
+						scope.$apply();
 					}
 
 				}
-                                if(clickedEl.tagName === 'BUTTON') {
-                                    $location.path("del/" + clickedEl.id);
-                                }
-                        });
+                if(clickedEl.tagName === 'BUTTON') {
+                	var tempId = parseInt(clickedEl.id,10) /100;
+                    $location.path("del/" + tempId);
+                    scope.$apply();
+                 }
+            });
 
 			var intervalId = setInterval(function() {
 				scope.dataLoading = true; 	
@@ -102,18 +103,20 @@ angular.module('myApp')
 					var date = new Date(tempDate);
 					receivedDate.className = "date";
 					receivedDate.innerHTML = date.getDate() + "-" + (date.getMonth()+1) + "-" + date.getFullYear() + " " + date.getHours() + ":" + (date.getMinutes() > 9 ? date.getMinutes() : 0 + date.getMinutes());
-					                                        
-					var deleteButton = document.createElement("button");
-					deleteButton.id = (email.id * 100);
-                                        deleteButton.className = "delete";
-					deleteButton.innerHTML = 'X';
-                                    
-                                        listElement.appendChild(addresses);
+
+	                listElement.appendChild(addresses);
 					listElement.appendChild(subject);
-                                        listElement.appendChild(prevcontent);
+	                listElement.appendChild(prevcontent);
 					listElement.appendChild(receivedDate);
-                                        listElement.appendChild(deleteButton);
-                                        
+
+					if(scope.view === "inbox") {                                        
+						var deleteButton = document.createElement("button");
+						deleteButton.id = (email.id * 100);
+	                                        deleteButton.className = "delete";
+						deleteButton.innerHTML = 'X';
+						listElement.appendChild(deleteButton);
+	                }
+	                                 
                                         
 					if(!email.read) {
 						listElement.className = "unread";

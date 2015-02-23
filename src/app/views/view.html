@@ -4,3 +4,13 @@
 <p>Content: {{mcontent}}</p>
 
 <p><a href="#/del/{{id}}">Delete email</a></p>
+
+<div class="form-group">
+        <label>Email labels</label>
+        <select ng-options="obj.value as obj.key for obj in labelsOptions" ng-model="selectedLabel"></select>
+	<ul>
+		<li ng-repeat="label in emailLabels">{{label}}</li>
+	</ul>
+
+	<input ng-click="saveLabel()" class="btn btn-default" type="submit" value="Save">
+</div>
